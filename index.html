@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>🍏 Apple of Fortune – Signal olish</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+    :root {
+      --primary-color: #00cc66;
+      --primary-hover: #00e673;
+      --secondary-color: #ffaa00;
+      --secondary-hover: #ffbb33;
+      --accent-color: #0066ff;
+      --accent-hover: #3399ff;
+      --danger-color: #ff4444;
+      --danger-hover: #ff6666;
+      --dark-bg: rgba(0, 0, 0, 0.85);
+      --card-bg: rgba(0, 0, 0, 0.7);
+      --text-color: #fff;
+      --highlight-color: #00ff99;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+                  url('https://tse1.mm.bing.net/th/id/OIP.IORCItIVQRs1mzjqiJUVwQAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 70px; /* Footer uchun joy */
+    }
+
+    header {
+      background: var(--dark-bg);
+      padding: 12px 10px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      border-radius: 0 0 12px 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+      line-height: 1.2;
+    }
+
+    .highlight {
+      color: var(--highlight-color);
+      font-weight: 700;
+      text-shadow: 0 0 8px var(--highlight-color);
+    }
+
+    .signal-section {
+      background: var(--card-bg);
+      margin: 15px 10px;
+      padding: 20px 15px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 255, 153, 0.35);
+      animation: fadeIn 1s ease forwards;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .signal-section h2 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      text-shadow: 0 0 6px rgba(0,0,0,0.7);
+    }
+
+    .btn {
+      cursor: pointer;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 20px;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      user-select: none;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+
+    .btn:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(20, 20);
+        opacity: 0;
+      }
+    }
+
+    .signal-btn {
+      background: var(--primary-color);
+      color: white;
+      box-shadow: 0 7px 20px var(--primary-color);
+    }
+    .signal-btn:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 9px 25px var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .guide-btn {
+      background: var(--secondary-color);
+      color: white;
+      box-shadow: 0 7px 20px var(--secondary-color);
+    }
+    .guide-btn:hover {
+      background: var(--secondary-hover);
+      box-shadow: 0 9px 25px var(--secondary-hover);
+      transform: translateY(-2px);
+    }
+
+    .send-btn {
+      background: var(--danger-color);
+      color: white;
+      box-shadow: 0 7px 20px var(--danger-color);
+      margin-top: 20px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 1.2rem;
+      padding: 16px 20px;
+    }
+    .send-btn:hover {
+      background: var(--danger-hover);
+      box-shadow: 0 9px 25px var(--danger-hover);
+      transform: translateY(-2px);
+    }
+
+    .register-btn {
+      background: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      margin-top: 20px;
+      box-shadow: 0 7px 20px var(--accent-color);
+      display: inline-block;
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      width: 100%;
+      max-width: 300px;
+    }
+    .register-btn:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 9px 25px var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .game-container, .guide-container {
+      background: var(--card-bg);
+      margin: 15px 10px;
+      padding: 20px 15px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 255, 153, 0.35);
+      display: none;
+      animation: fadeIn 0.8s ease forwards;
+      flex-grow: 1;
+    }
+
+    .game-container h3 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .apple {
+      font-size: 60px;
+      animation: bounce 1.2s infinite;
+      user-select: none;
+      margin-bottom: 15px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .form-group {
+      margin: 18px 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--highlight-color);
+      font-size: 1rem;
+    }
+
+    input[type="text"], input[type="tel"] {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      box-shadow: inset 0 0 6px rgba(0, 255, 153, 0.4);
+      transition: box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    input[type="text"]:focus, input[type="tel"]:focus {
+      box-shadow: 0 0 10px var(--highlight-color);
+    }
+
+    .result-message {
+      background: rgba(0,0,0,0.8);
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 18px 15px;
+      margin-top: 25px;
+      color: var(--highlight-color);
+      display: none;
+      user-select: none;
+      text-shadow: 0 0 5px rgba(0,255,153,0.8);
+      animation: pulse 2s infinite;
+      line-height: 1.5;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 255, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0); }
+    }
+
+    .guide-container h2 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .guide-step {
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .guide-step:hover {
+      transform: translateY(-5px);
+    }
+
+    .guide-step img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    .guide-step p {
+      margin-top: 10px;
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .footer-buttons {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 8px;
+      z-index: 999;
+      box-shadow: 0 -4px 15px rgba(0,255,153,0.6);
+      backdrop-filter: blur(5px);
+    }
+    .footer-buttons a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 6px;
+      background: #222;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      width: 23%;
+      transition: all 0.3s ease;
+      user-select: none;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+    .footer-buttons a:hover {
+      background: var(--primary-color);
+      box-shadow: 0 5px 15px var(--primary-color);
+      transform: translateY(-2px);
+    }
+    .footer-buttons img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 0 2px black);
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .progress-bar {
+      height: 5px;
+      width: 0;
+      background: var(--highlight-color);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: width 0.3s ease;
+    }
+
+    /* Kichik ekranlar uchun qo'shimcha moslashuv */
+    @media (max-width: 360px) {
+      header {
+        font-size: 1.2rem;
+        padding: 10px 8px;
+      }
+      .signal-section h2 {
+        font-size: 1rem;
+      }
+      .btn, .register-btn {
+        font-size: 1rem;
+        padding: 12px 16px;
+      }
+      .send-btn {
+        font-size: 1.1rem;
+        padding: 14px 16px;
+      }
+      .footer-buttons a {
+        font-size: 10px;
+        padding: 6px 4px;
+      }
+      .footer-buttons img {
+        width: 22px;
+        height: 22px;
+      }
+      .game-container h3, .guide-container h2 {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .signal-section, .game-container, .guide-container {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn, .register-btn {
+        display: inline-block;
+        width: auto;
+        margin: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <header>🍏 Apple of Fortune – <span class="highlight">Signal olish</span></header>
+
+  <section class="signal-section" id="signal-section">
+    <h2>
+      🎯 <span class="highlight">AIFUT promokodi</span> orqali ro'yxatdan o'ting<br />
+      💰 <span class="highlight">100$ gacha bonus</span> va daromad olishni boshlang!
+    </h2>
+    <button class="btn signal-btn" onclick="showGame()">📡 Signal olish</button>
+    <button class="btn guide-btn" onclick="showGuide()">📘 Qo'llanma</button>
+  </section>
+
+  <div class="game-container" id="game">
+    <div class="apple">🍎</div>
+    <h3>Promokod orqali ro'yxatga olingan akkaunt ma'lumotlarini kiriting:</h3>
+    
+    <div class="form-group">
+      <label class="form-label" for="userId">🎫 ID raqamingizni kiriting</label>
+      <input type="text" id="userId" placeholder="Masalan: 12345678" />
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label" for="userPhone">📱 Telefon raqamingizni kiriting</label>
+      <input type="tel" id="userPhone" placeholder="Masalan: +998901234567" />
+    </div>
+    
+    <button class="btn send-btn" onclick="sendData()">👉 SIGNAL OLISH 👈</button>
+
+    <div class="result-message" id="resultMessage">
+      Sizning ma'lumotlaringiz <span class="highlight">tahlil qilinmoqda...</span><br /><br />
+      Agar siz <span class="highlight">to'liq ro'yxatdan o'tgan</span>, <span class="highlight">promokodni to'g'ri</span> kiritgan va kamida <span class="highlight">$15 depozit</span> qilgan bo'lsangiz — <span class="highlight">bot 24 soat ichida aktivlashadi!</span>
+    </div>
+  </div>
+
+  <div class="guide-container" id="guideBox">
+    <h2>📘 Ro'yxatdan o'tish bo'yicha qo'llanma</h2>
+    
+    <div class="guide-step">
+      <img src="https://i.ibb.co/QF1CKKTf/09a4ce69-bae7-4e59-8cbb-5379a8bff35a.jpg" alt="Telegram bot qidirish" />
+      <p>1. <span class="highlight">AIFUT</span> promokodini kirgizib ro'yhatdan o'ting!.</p>
+    </div>
+    
+    <div class="guide-step">
+      <img src="https://i.ibb.co/NndNKYjL/images-1.jpg" alt="Promokod kiritish" />
+      <p>2. <span class="highlight">1Xbet, DBbet, WinWin, 888Starz </span> ushbu bukmekerlar orqali ro'yhatdan o'ting.</p>
+    </div>
+    
+    <div class="guide-step">
+      <img src="https://casino.betmgm.com/en/blog/wp-content/uploads/2022/08/Header-Piles-of-cash-next-to-casino-chips-Casino-chips-instead-of-cash.jpg" alt="Depozit qilish" />
+      <p>3. To'liq ro'yhatdan o'tganingizga va <span class="highlight">$15</span> depozit kiritganingizga ishonch hosil qiling. xammasi tayor bolganidan song id raqamingiz va telefon raqamingizni yuboring</p>
+    </div>
+
+    <a class="register-btn" href="https://t.me/aifutbot" target="_blank" rel="noopener noreferrer">
+      🚀 Ro'yxatdan o'tish
+    </a>
+  </div>
+
+  <div class="footer-buttons">
+    <a href="https://reffpa.com/L?tag=d_4147173m_1599c_&site=4147173&ad=1599&r=registration" rel="noopener noreferrer">
+      <img src="https://th.bing.com/th?id=OIF.D26%2f5X%2b5CJ7AZA2x2LFMjg&cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Home" />
+      1Xbet
+    </a>
+    <a href="https://refpa168704.pro/L?tag=d_4145952m_64485c_&site=4145952&ad=64485" rel="noopener noreferrer">
+      <img src="https://static.sportsbetting-apps.net/brand/winwin.png" alt="Search" />
+      WinWin
+    </a>
+    <a href="https://refpa96317.com/L?tag=d_4585917m_11213c_&site=4585917&ad=11213" target="_blank" rel="noopener noreferrer">
+      <img src="https://agentdbbet.com/wp-content/uploads/2024/11/dbbet.jpg" alt="Stats" />
+      DBbet
+    </a>
+    <a href="https://top100bonus.com/L?tag=d_4757561m_40211c_&site=4757561&ad=40211" target="_blank" rel="noopener noreferrer">
+      <img src="https://smartbettingsites.com/wp-content/uploads/2023/06/888stars.png" alt="Settings" />
+      888Starz
+    </a>
+  </div>
+
+  <script>
+    // Progress bar
+    window.onscroll = function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+    };
+
+    function showGame() {
+      document.getElementById('game').style.display = 'block';
+      document.getElementById('guideBox').style.display = 'none';
+      document.getElementById('signal-section').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showGuide() {
+      document.getElementById('guideBox').style.display = 'block';
+      document.getElementById('game').style.display = 'none';
+      document.getElementById('signal-section').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function sendData() {
+      const userId = document.getElementById('userId').value.trim();
+      const userPhone = document.getElementById('userPhone').value.trim();
+      const resultMessage = document.getElementById('resultMessage');
+
+      if (!userId) {
+        alert('ID raqamingizni kiriting!');
+        document.getElementById('userId').focus();
+        return;
+      }
+      if (!userPhone) {
+        alert('Telefon raqamingizni kiriting!');
+        document.getElementById('userPhone').focus();
+        return;
+      }
+
+      // Telefon raqamini tekshirish
+      const phoneRegex = /^\+?[0-9]{10,15}$/;
+      if (!phoneRegex.test(userPhone.replace(/\s/g, ''))) {
+        alert('Iltimos, to\'g\'ri telefon raqamini kiriting!');
+        document.getElementById('userPhone').focus();
+        return;
+      }
+
+      resultMessage.style.display = 'block';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      
+      // Ma'lumotlarni saqlash simulyatsiyasi
+      setTimeout(() => {
+        resultMessage.innerHTML = `
+          ✅ <span class="highlight">Ma'lumotlaringiz qabul qilindi!</span><br><br>
+          Sizning ID: <span class="highlight">${userId}</span><br>
+          Telefon: <span class="highlight">${userPhone}</span><br><br>
+          Bot 24 soat ichida aktivlashadi!
+        `;
+      }, 2000);
+    }
+
+    // Forma elementlariga fokus qo'shish
+    document.addEventListener('DOMContentLoaded', function() {
+      const inputs = document.querySelectorAll('input[type="text"], input[type="tel"]');
+      inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+          this.parentElement.classList.add('focused');
+        });
+        input.addEventListener('blur', function() {
+          this.parentElement.classList.remove('focused');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
