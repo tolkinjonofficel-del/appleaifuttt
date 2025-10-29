@@ -148,22 +148,23 @@
             justify-content: center;
             align-items: center;
             margin: 30px 0;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-wrap: nowrap; /* Telfonda ham bitta qator bo'lishi uchun */
+            gap: 10px; /* Olmalar orasidagi masofani kamaytirdim */
+            overflow-x: auto; /* Agar olmalar sig'masa, gorizontal skroll */
+            padding: 10px 0;
         }
         
         /* Olma stillari */
         .mystery-apple, .apple {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 5px;
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            flex-shrink: 0;
+            flex-shrink: 0; /* Olmalar sigish uchun kichrayishiga yo'l qo'ymaydi */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -333,9 +334,13 @@
             }
             
             .mystery-apple, .apple {
-                width: 70px;
-                height: 70px;
-                margin: 8px;
+                width: 65px;
+                height: 65px;
+            }
+            
+            .apples-container {
+                gap: 8px;
+                margin: 20px 0;
             }
         }
         
@@ -351,11 +356,10 @@
             .mystery-apple, .apple {
                 width: 60px;
                 height: 60px;
-                margin: 6px;
             }
             
             .apples-container {
-                gap: 10px;
+                gap: 6px;
                 margin: 20px 0;
             }
             
@@ -369,11 +373,10 @@
             .mystery-apple, .apple {
                 width: 55px;
                 height: 55px;
-                margin: 4px;
             }
             
             .apples-container {
-                gap: 8px;
+                gap: 5px;
             }
         }
     </style>
@@ -402,48 +405,48 @@
         <div id="warningSection" class="card hidden">
             <h2>⚠️ Diqqat! Ogohlantirish</h2>
             <div class="warning">
-                <p><strong>Hurmatli o'yinchi, AZARTga berilmang!</strong></p>
+                <p><strong>Hurmatli o'yinchi, AZARTga berilmang! 🎲</strong></p>
                 <p>Kunlik yetarli daromadni olib to'xtating va dam oling. Bir kunda 10 marta tagacha o'ynash tavsiya etiladi.
-profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishlaydi</p>
+profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishlaydi ✅</p>
             </div>
             
             <div class="user-id-display">
                 <strong>ID Raqamingiz:</strong> <span id="displayUserId"></span>
             </div>
             
-            <p><span class="money-highlight">Tayyor bo'lsangiz, daromad olishni boshlang!</span></p>
-            <button class="btn" id="confirmStartBtn">Daromad Olishni Boshlash</button>
+            <p><span class="money-highlight">Tayyor bo'lsangiz, daromad olishni boshlang! 💰</span></p>
+            <button class="btn" id="confirmStartBtn">Daromad Olishni Boshlash 🚀</button>
         </div>
         
         <div id="gameSection" class="card hidden">
-            <h2>Apple of Fortune</h2>
+            <h2>Apple of Fortune 🍎</h2>
             
             <div class="user-id-display">
                 <strong>signal uchun ID Raqamingiz:</strong> <span id="gameUserId"></span>
             </div>
             
-            <p><span class="money-highlight">ID raqamingiz korsatilgan profildan apple of fortune oyiniga kiring</span>butun olmalarni ko'rish uchun "Ko'rish" tugmasini bosing va butun olmalardan birini tanlang galaba qiling.</p>
+            <p><span class="money-highlight">ID raqamingiz korsatilgan profildan apple of fortune oyiniga kiring</span>butun olmalarni ko'rish uchun "Ko'rish" tugmasini bosing va butun olmalardan birini tanlang galaba qiling. 🎯</p>
             
             <div class="apples-container" id="applesContainer">
                 <!-- Sirli olmalar JavaScript orqali yaratiladi -->
             </div>
             
-            <button class="btn reveal-btn" id="revealBtn">Olmalarni Ko'rish</button>
+            <button class="btn reveal-btn" id="revealBtn">Olmalarni Ko'rish 👀</button>
             
             <div id="resultMessage" class="result-message hidden"></div>
             
-            <button class="btn hidden" id="continueBtn">Kegingi qatorni ko'rish</button>
-            <button class="btn hidden" id="restartBtn">Qayta boshlash</button>
+            <button class="btn hidden" id="continueBtn">Kegingi qatorni ko'rish ➡️</button>
+            <button class="btn hidden" id="restartBtn">Qayta boshlash 🔄</button>
         </div>
         
         <div id="shareSection" class="card hidden">
-            <h2>O'yinni davom ettirish uchun 20 ta odamga tarqating</h2>
+            <h2>O'yinni davom ettirish uchun 20 ta odamga tarqating 📢</h2>
             
             <div class="user-id-display">
                 <strong>ID Raqamingiz:</strong> <span id="shareUserId"></span>
             </div>
             
-            <p><span class="money-highlight">Ko'proq pul ishlash uchun</span> o'yinni davom ettirish va katta yutuqlarga erishish uchun do'stlaringiz bilan baham ko'ring!</p>
+            <p><span class="money-highlight">Ko'proq pul ishlash uchun 💸</span> o'yinni davom ettirish va katta yutuqlarga erishish uchun do'stlaringiz bilan baham ko'ring! 🤝</p>
             
             <div class="share-progress">
                 <p>Tarqatish progressi: <span class="share-count" id="shareCount">0</span> / 20</p>
@@ -453,11 +456,11 @@ profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishla
             </div>
             
             <div class="share-buttons">
-                <button class="btn share-btn" id="shareBtn">Do'stlarga Tarqatish va Pul Ishlash</button>
+                <button class="btn share-btn" id="shareBtn">Do'stlarga Tarqatish va Pul Ishlash 📤</button>
             </div>
             
             <div class="info-box">
-                <p><strong>Eslatma:</strong> Progress 2 daqiqada 2 tadan ko'payadi va borgan sari sekinlashadi. Hech qachon 20 ga yetib bormaydi.</p>
+                <p><strong>Eslatma:</strong> Progress 2 daqiqada 2 tadan ko'payadi va borgan sari sekinlashadi. Hech qachon 20 ga yetib bormaydi. ⏳</p>
             </div>
         </div>
     </div>
@@ -599,7 +602,7 @@ profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishla
                 restartBtn.classList.add('hidden');
                 revealBtn.classList.remove('hidden');
                 revealBtn.disabled = false;
-                revealBtn.textContent = 'OLMALARNI KORISH...';
+                revealBtn.textContent = 'OLMALARNI KORISH... 👀';
                 
                 for (let i = 0; i < 5; i++) {
                     const apple = document.createElement('div');
@@ -614,7 +617,7 @@ profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishla
                 
                 applesRevealed = true;
                 revealBtn.disabled = true;
-                revealBtn.textContent = 'Butun olmani tanlang va kegingi qatorni korishni bosing! ';
+                revealBtn.textContent = 'Butun olmani tanlang va kegingi qatorni korishni bosing! 🎯';
                 gameActive = true;
                 revealApples();
             });
@@ -650,13 +653,13 @@ profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishla
                 
                 if (appleType === 'bitten') {
                     // Tishlangan olma - o'yin tugadi
-                    resultMessage.textContent = "❌ Tishlangan olma tanladingiz! O'yin tugadi. Qayta urinib ko'ring!";
+                    resultMessage.textContent = "❌ Tishlangan olma tanladingiz! O'yin tugadi. Qayta urinib ko'ring! 🔄";
                     resultMessage.className = 'result-message failure';
                     resultMessage.classList.remove('hidden');
                     restartBtn.classList.remove('hidden');
                 } else {
                     // Butun olma - o'yin davom etadi
-                    resultMessage.textContent = "✅ Butun olma tanladingiz! Tabriklaymiz! O'yinni davom ettirishingiz mumkin va pul ishlashda davom eting!";
+                    resultMessage.textContent = "✅ Butun olma tanladingiz! Tabriklaymiz! O'yinni davom ettirishingiz mumkin va pul ishlashda davom eting! 💰";
                     resultMessage.className = 'result-message success';
                     resultMessage.classList.remove('hidden');
                     
@@ -711,7 +714,44 @@ profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishla
             
             // Tarqatish tugmasi
             shareBtn.addEventListener('click', function() {
-                alert("Haqiqiy ilovada bu sizni ijtimoiy tarmoqlaringizga o'tkazadi. Demo rejimida bu funksiya faqat ko'rsatish uchun.");
+                // Telegram orqali tarqatish
+                const shareText = "Do'st 💫 bunday bot ko'rmagansan! Hozirroq qo'shil va pul ishlashni sen ham boshlash! 💰 @strategioyinlar_bot 🍎";
+                
+                if (navigator.share) {
+                    // Web Share API dan foydalanish (mobil qurilmalarda)
+                    navigator.share({
+                        title: 'Apple of Fortune',
+                        text: shareText,
+                        url: window.location.href
+                    })
+                    .then(() => console.log('Muvaffaqiyatli tarqatildi'))
+                    .catch((error) => console.log('Tarqatishda xatolik:', error));
+                } else if (navigator.clipboard) {
+                    // Clipboard API dan foydalanish
+                    navigator.clipboard.writeText(shareText)
+                    .then(() => {
+                        alert("Xabar nusxalandi! Telegram'ga yopishtiring va do'stlaringizga yuboring! 📤");
+                    })
+                    .catch(err => {
+                        console.error('Nusxalashda xatolik:', err);
+                        alert("Xabarni nusxalashda xatolik. Qo'lda nusxalab oling: " + shareText);
+                    });
+                } else {
+                    // Fallback
+                    const textArea = document.createElement("textarea");
+                    textArea.value = shareText;
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        alert("Xabar nusxalandi! Telegram'ga yopishtiring va do'stlaringizga yuboring! 📤");
+                    } catch (err) {
+                        console.error('Nusxalashda xatolik:', err);
+                        alert("Xabarni nusxalashda xatolik. Qo'lda nusxalab oling: " + shareText);
+                    }
+                    document.body.removeChild(textArea);
+                }
                 
                 // Demo rejimida progressni biroz oshiramiz
                 if (shareProgressValue < 18) {
@@ -723,4 +763,3 @@ profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishla
     </script>
 </body>
 </html>
-
