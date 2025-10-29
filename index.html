@@ -1,567 +1,725 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>🍏 Apple of Fortune – Signal olish</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-
-    :root {
-      --primary-color: #00cc66;
-      --primary-hover: #00e673;
-      --secondary-color: #ffaa00;
-      --secondary-hover: #ffbb33;
-      --accent-color: #0066ff;
-      --accent-hover: #3399ff;
-      --danger-color: #ff4444;
-      --danger-hover: #ff6666;
-      --dark-bg: rgba(0, 0, 0, 0.85);
-      --card-bg: rgba(0, 0, 0, 0.7);
-      --text-color: #fff;
-      --highlight-color: #00ff99;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-      overflow-x: hidden;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
-                  url('https://tse1.mm.bing.net/th/id/OIP.IORCItIVQRs1mzjqiJUVwQAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center fixed;
-      background-size: cover;
-      color: var(--text-color);
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-bottom: 70px; /* Footer uchun joy */
-    }
-
-    header {
-      background: var(--dark-bg);
-      padding: 12px 10px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      border-radius: 0 0 12px 12px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(5px);
-      line-height: 1.2;
-    }
-
-    .highlight {
-      color: var(--highlight-color);
-      font-weight: 700;
-      text-shadow: 0 0 8px var(--highlight-color);
-    }
-
-    .signal-section {
-      background: var(--card-bg);
-      margin: 15px 10px;
-      padding: 20px 15px;
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(0, 255, 153, 0.35);
-      animation: fadeIn 1s ease forwards;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .signal-section h2 {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      line-height: 1.4;
-      text-shadow: 0 0 6px rgba(0,0,0,0.7);
-    }
-
-    .btn {
-      cursor: pointer;
-      border: none;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 14px 20px;
-      margin: 10px 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      user-select: none;
-      display: block;
-      width: 100%;
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 5px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.5);
-      opacity: 0;
-      border-radius: 100%;
-      transform: scale(1, 1) translate(-50%);
-      transform-origin: 50% 50%;
-    }
-
-    .btn:focus:not(:active)::after {
-      animation: ripple 1s ease-out;
-    }
-
-    @keyframes ripple {
-      0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(20, 20);
-        opacity: 0;
-      }
-    }
-
-    .signal-btn {
-      background: var(--primary-color);
-      color: white;
-      box-shadow: 0 7px 20px var(--primary-color);
-    }
-    .signal-btn:hover {
-      background: var(--primary-hover);
-      box-shadow: 0 9px 25px var(--primary-hover);
-      transform: translateY(-2px);
-    }
-
-    .guide-btn {
-      background: var(--secondary-color);
-      color: white;
-      box-shadow: 0 7px 20px var(--secondary-color);
-    }
-    .guide-btn:hover {
-      background: var(--secondary-hover);
-      box-shadow: 0 9px 25px var(--secondary-hover);
-      transform: translateY(-2px);
-    }
-
-    .send-btn {
-      background: var(--danger-color);
-      color: white;
-      box-shadow: 0 7px 20px var(--danger-color);
-      margin-top: 20px;
-      width: 100%;
-      max-width: 300px;
-      font-size: 1.2rem;
-      padding: 16px 20px;
-    }
-    .send-btn:hover {
-      background: var(--danger-hover);
-      box-shadow: 0 9px 25px var(--danger-hover);
-      transform: translateY(-2px);
-    }
-
-    .register-btn {
-      background: var(--accent-color);
-      color: white;
-      text-decoration: none;
-      padding: 14px 20px;
-      margin-top: 20px;
-      box-shadow: 0 7px 20px var(--accent-color);
-      display: inline-block;
-      transition: all 0.3s ease;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      width: 100%;
-      max-width: 300px;
-    }
-    .register-btn:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 9px 25px var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    .game-container, .guide-container {
-      background: var(--card-bg);
-      margin: 15px 10px;
-      padding: 20px 15px;
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(0, 255, 153, 0.35);
-      display: none;
-      animation: fadeIn 0.8s ease forwards;
-      flex-grow: 1;
-    }
-
-    .game-container h3 {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-
-    .apple {
-      font-size: 60px;
-      animation: bounce 1.2s infinite;
-      user-select: none;
-      margin-bottom: 15px;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .form-group {
-      margin: 18px 0;
-      text-align: left;
-      width: 100%;
-    }
-
-    .form-label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 600;
-      color: var(--highlight-color);
-      font-size: 1rem;
-    }
-
-    input[type="text"], input[type="tel"] {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      box-shadow: inset 0 0 6px rgba(0, 255, 153, 0.4);
-      transition: box-shadow 0.3s ease;
-      background: rgba(255, 255, 255, 0.9);
-    }
-    input[type="text"]:focus, input[type="tel"]:focus {
-      box-shadow: 0 0 10px var(--highlight-color);
-    }
-
-    .result-message {
-      background: rgba(0,0,0,0.8);
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 18px 15px;
-      margin-top: 25px;
-      color: var(--highlight-color);
-      display: none;
-      user-select: none;
-      text-shadow: 0 0 5px rgba(0,255,153,0.8);
-      animation: pulse 2s infinite;
-      line-height: 1.5;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 255, 153, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0); }
-    }
-
-    .guide-container h2 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-    }
-
-    .guide-step {
-      margin: 20px 0;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .guide-step:hover {
-      transform: translateY(-5px);
-    }
-
-    .guide-step img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      max-height: 200px;
-      object-fit: cover;
-    }
-
-    .guide-step p {
-      margin-top: 10px;
-      line-height: 1.5;
-      font-size: 1rem;
-    }
-
-    .footer-buttons {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: flex;
-      justify-content: space-around;
-      padding: 12px 8px;
-      z-index: 999;
-      box-shadow: 0 -4px 15px rgba(0,255,153,0.6);
-      backdrop-filter: blur(5px);
-    }
-    .footer-buttons a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 6px;
-      background: #222;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 11px;
-      width: 23%;
-      transition: all 0.3s ease;
-      user-select: none;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
-      text-align: center;
-    }
-    .footer-buttons a:hover {
-      background: var(--primary-color);
-      box-shadow: 0 5px 15px var(--primary-color);
-      transform: translateY(-2px);
-    }
-    .footer-buttons img {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 6px;
-      filter: drop-shadow(0 0 2px black);
-      user-select: none;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .progress-bar {
-      height: 5px;
-      width: 0;
-      background: var(--highlight-color);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      transition: width 0.3s ease;
-    }
-
-    /* Kichik ekranlar uchun qo'shimcha moslashuv */
-    @media (max-width: 360px) {
-      header {
-        font-size: 1.2rem;
-        padding: 10px 8px;
-      }
-      .signal-section h2 {
-        font-size: 1rem;
-      }
-      .btn, .register-btn {
-        font-size: 1rem;
-        padding: 12px 16px;
-      }
-      .send-btn {
-        font-size: 1.1rem;
-        padding: 14px 16px;
-      }
-      .footer-buttons a {
-        font-size: 10px;
-        padding: 6px 4px;
-      }
-      .footer-buttons img {
-        width: 22px;
-        height: 22px;
-      }
-      .game-container h3, .guide-container h2 {
-        font-size: 1.1rem;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .signal-section, .game-container, .guide-container {
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .btn, .register-btn {
-        display: inline-block;
-        width: auto;
-        margin: 8px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple of Fortune - Biz bilan ko'proq pul ishlang!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a3a, #0d1b2a);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .apple-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4CAF50;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-left: 5px solid #FFC107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .apples-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        /* Olma stillari */
+        .mystery-apple, .apple {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 3px solid transparent;
+        }
+        
+        .mystery-apple {
+            background-image: url('https://i.ibb.co/Gf3NcMDQ/maxresdefault.jpg');
+            border: 2px dashed #888;
+        }
+        
+        .apple {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: reveal 0.5s ease;
+            border: 3px solid #ffd700;
+        }
+        
+        @keyframes reveal {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .apple:hover {
+            transform: scale(1.1);
+            border-color: #4CAF50;
+        }
+        
+        .apple.whole {
+            background-image: url('https://i.pinimg.com/736x/6a/aa/19/6aaa196961f40afd21cf9d21824f137e.jpg');
+        }
+        
+        .apple.bitten {
+            background-image: url('https://i.ibb.co/m5sNvNPK/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .hacker-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+        
+        .matrix-code {
+            color: #0f0;
+            font-family: monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            width: 80%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 3s ease;
+        }
+        
+        .share-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .share-btn {
+            background: linear-gradient(135deg, #2196F3, #0b7dda);
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        
+        .share-progress {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .share-count {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .result-message {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.3rem;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .success {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .failure {
+            background: rgba(244, 67, 54, 0.2);
+            border-left: 5px solid #F44336;
+        }
+        
+        .info-box {
+            background: rgba(33, 150, 243, 0.2);
+            border-left: 5px solid #2196F3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .user-id-display {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .reveal-btn {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+        }
+        
+        .money-highlight {
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* Mobil qurilmalar uchun moslashtirish */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px 0;
+                margin-bottom: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .mystery-apple, .apple {
+                width: 70px;
+                height: 70px;
+                margin: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .mystery-apple, .apple {
+                width: 60px;
+                height: 60px;
+                margin: 6px;
+            }
+            
+            .apples-container {
+                gap: 10px;
+                margin: 20px 0;
+            }
+            
+            .btn {
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .mystery-apple, .apple {
+                width: 55px;
+                height: 55px;
+                margin: 4px;
+            }
+            
+            .apples-container {
+                gap: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <div class="progress-bar" id="progressBar"></div>
-
-  <header>🍏 Apple of Fortune – <span class="highlight">Signal olish</span></header>
-
-  <section class="signal-section" id="signal-section">
-    <h2>
-      🎯 <span class="highlight">AIFUT promokodi</span> orqali ro'yxatdan o'ting<br />
-      💰 <span class="highlight">100$ gacha bonus</span> va daromad olishni boshlang!
-    </h2>
-    <button class="btn signal-btn" onclick="showGame()">📡 Signal olish</button>
-    <button class="btn guide-btn" onclick="showGuide()">📘 Qo'llanma</button>
-  </section>
-
-  <div class="game-container" id="game">
-    <div class="apple">🍎</div>
-    <h3>Promokod orqali ro'yxatga olingan akkaunt ma'lumotlarini kiriting:</h3>
-    
-    <div class="form-group">
-      <label class="form-label" for="userId">🎫 ID raqamingizni kiriting</label>
-      <input type="text" id="userId" placeholder="Masalan: 12345678" />
+    <div class="container">
+        <header>
+            <div class="apple-icon">🍎</div>
+            <h1>Apple of Fortune</h1>
+            <p class="subtitle">G'alaba qozonish strategiyasi bilan birga! <span class="money-highlight">Biz bilan ko'proq pul ishlang va daromad olishni boshlang dastur aniq ishlashi uchun AIFUT promokod orqali toliq royhatdan otish kerak!</span></p>
+        </header>
+        
+        <div class="card" id="loginSection">
+            <h2>O'yinni boshlash</h2>
+            <p><span class="money-highlight">Daromad olishni boshlang!</span> Maxsus promokod yordamida ro'yxatdan o'tgan ID raqamingizni kiriting va pul ko'paytirishni boshlang!</p>
+            
+            <div class="form-group">
+                <label for="userId">ID Raqamingiz</label>
+                <input type="text" id="userId" placeholder="ID raqamni yozing..." maxlength="11">
+                <div class="error-message" id="idError">ID raqam togri kiritilishi shart</div>
+            </div>
+            
+            <button class="btn" id="startGameBtn">Pul Ko'paytirishni Boshlash</button>
+        </div>
+        
+        <div id="warningSection" class="card hidden">
+            <h2>⚠️ Diqqat! Ogohlantirish</h2>
+            <div class="warning">
+                <p><strong>Hurmatli o'yinchi, AZARTga berilmang!</strong></p>
+                <p>Kunlik yetarli daromadni olib to'xtating va dam oling. Bir kunda 10 marta tagacha o'ynash tavsiya etiladi.
+profil toldirilgan bolishi kerak telfon raqam qoshilgan bolsa bot mukammal ishlaydi</p>
+            </div>
+            
+            <div class="user-id-display">
+                <strong>ID Raqamingiz:</strong> <span id="displayUserId"></span>
+            </div>
+            
+            <p><span class="money-highlight">Tayyor bo'lsangiz, daromad olishni boshlang!</span></p>
+            <button class="btn" id="confirmStartBtn">Daromad Olishni Boshlash</button>
+        </div>
+        
+        <div id="gameSection" class="card hidden">
+            <h2>Apple of Fortune</h2>
+            
+            <div class="user-id-display">
+                <strong>signal uchun ID Raqamingiz:</strong> <span id="gameUserId"></span>
+            </div>
+            
+            <p><span class="money-highlight">ID raqamingiz korsatilgan profildan apple of fortune oyiniga kiring</span>butun olmalarni ko'rish uchun "Ko'rish" tugmasini bosing va butun olmalardan birini tanlang galaba qiling.</p>
+            
+            <div class="apples-container" id="applesContainer">
+                <!-- Sirli olmalar JavaScript orqali yaratiladi -->
+            </div>
+            
+            <button class="btn reveal-btn" id="revealBtn">Olmalarni Ko'rish</button>
+            
+            <div id="resultMessage" class="result-message hidden"></div>
+            
+            <button class="btn hidden" id="continueBtn">Kegingi qatorni ko'rish</button>
+            <button class="btn hidden" id="restartBtn">Qayta boshlash</button>
+        </div>
+        
+        <div id="shareSection" class="card hidden">
+            <h2>O'yinni davom ettirish uchun 20 ta odamga tarqating</h2>
+            
+            <div class="user-id-display">
+                <strong>ID Raqamingiz:</strong> <span id="shareUserId"></span>
+            </div>
+            
+            <p><span class="money-highlight">Ko'proq pul ishlash uchun</span> o'yinni davom ettirish va katta yutuqlarga erishish uchun do'stlaringiz bilan baham ko'ring!</p>
+            
+            <div class="share-progress">
+                <p>Tarqatish progressi: <span class="share-count" id="shareCount">0</span> / 20</p>
+                <div class="progress-bar">
+                    <div class="progress" id="shareProgress"></div>
+                </div>
+            </div>
+            
+            <div class="share-buttons">
+                <button class="btn share-btn" id="shareBtn">Do'stlarga Tarqatish va Pul Ishlash</button>
+            </div>
+            
+            <div class="info-box">
+                <p><strong>Eslatma:</strong> Progress 2 daqiqada 2 tadan ko'payadi va borgan sari sekinlashadi. Hech qachon 20 ga yetib bormaydi.</p>
+            </div>
+        </div>
     </div>
     
-    <div class="form-group">
-      <label class="form-label" for="userPhone">📱 Telefon raqamingizni kiriting</label>
-      <input type="tel" id="userPhone" placeholder="Masalan: +998901234567" />
-    </div>
-    
-    <button class="btn send-btn" onclick="sendData()">👉 SIGNAL OLISH 👈</button>
-
-    <div class="result-message" id="resultMessage">
-      Sizning ma'lumotlaringiz <span class="highlight">tahlil qilinmoqda...</span><br /><br />
-      Agar siz <span class="highlight">to'liq ro'yxatdan o'tgan</span>, <span class="highlight">promokodni to'g'ri</span> kiritgan va kamida <span class="highlight">$15 depozit</span> qilgan bo'lsangiz — <span class="highlight">bot 24 soat ichida aktivlashadi!</span>
-    </div>
-  </div>
-
-  <div class="guide-container" id="guideBox">
-    <h2>📘 Ro'yxatdan o'tish bo'yicha qo'llanma</h2>
-    
-    <div class="guide-step">
-      <img src="https://i.ibb.co/QF1CKKTf/09a4ce69-bae7-4e59-8cbb-5379a8bff35a.jpg" alt="Telegram bot qidirish" />
-      <p>1. <span class="highlight">AIFUT</span> promokodini kirgizib ro'yhatdan o'ting!.</p>
-    </div>
-    
-    <div class="guide-step">
-      <img src="https://i.ibb.co/NndNKYjL/images-1.jpg" alt="Promokod kiritish" />
-      <p>2. <span class="highlight">1Xbet, DBbet, WinWin, 888Starz </span> ushbu bukmekerlar orqali ro'yhatdan o'ting.</p>
-    </div>
-    
-    <div class="guide-step">
-      <img src="https://casino.betmgm.com/en/blog/wp-content/uploads/2022/08/Header-Piles-of-cash-next-to-casino-chips-Casino-chips-instead-of-cash.jpg" alt="Depozit qilish" />
-      <p>3. To'liq ro'yhatdan o'tganingizga va <span class="highlight">$15</span> depozit kiritganingizga ishonch hosil qiling. xammasi tayor bolganidan song id raqamingiz va telefon raqamingizni yuboring</p>
+    <div id="hackerAnimation" class="hacker-animation hidden">
+        <div class="matrix-code" id="matrixCode">HACKING APPLE OF FORTUNE...</div>
+        <div class="progress-bar">
+            <div class="progress" id="hackerProgress"></div>
+        </div>
     </div>
 
-    <a class="register-btn" href="https://t.me/aifutbot" target="_blank" rel="noopener noreferrer">
-      🚀 Ro'yxatdan o'tish
-    </a>
-  </div>
-
-  <div class="footer-buttons">
-    <a href="https://reffpa.com/L?tag=d_4147173m_1599c_&site=4147173&ad=1599&r=registration" rel="noopener noreferrer">
-      <img src="https://th.bing.com/th?id=OIF.D26%2f5X%2b5CJ7AZA2x2LFMjg&cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Home" />
-      1Xbet
-    </a>
-    <a href="https://refpa168704.pro/L?tag=d_4145952m_64485c_&site=4145952&ad=64485" rel="noopener noreferrer">
-      <img src="https://static.sportsbetting-apps.net/brand/winwin.png" alt="Search" />
-      WinWin
-    </a>
-    <a href="https://refpa96317.com/L?tag=d_4585917m_11213c_&site=4585917&ad=11213" target="_blank" rel="noopener noreferrer">
-      <img src="https://agentdbbet.com/wp-content/uploads/2024/11/dbbet.jpg" alt="Stats" />
-      DBbet
-    </a>
-    <a href="https://top100bonus.com/L?tag=d_4757561m_40211c_&site=4757561&ad=40211" target="_blank" rel="noopener noreferrer">
-      <img src="https://smartbettingsites.com/wp-content/uploads/2023/06/888stars.png" alt="Settings" />
-      888Starz
-    </a>
-  </div>
-
-  <script>
-    // Progress bar
-    window.onscroll = function() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById("progressBar").style.width = scrolled + "%";
-    };
-
-    function showGame() {
-      document.getElementById('game').style.display = 'block';
-      document.getElementById('guideBox').style.display = 'none';
-      document.getElementById('signal-section').style.display = 'none';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showGuide() {
-      document.getElementById('guideBox').style.display = 'block';
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('signal-section').style.display = 'none';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function sendData() {
-      const userId = document.getElementById('userId').value.trim();
-      const userPhone = document.getElementById('userPhone').value.trim();
-      const resultMessage = document.getElementById('resultMessage');
-
-      if (!userId) {
-        alert('ID raqamingizni kiriting!');
-        document.getElementById('userId').focus();
-        return;
-      }
-      if (!userPhone) {
-        alert('Telefon raqamingizni kiriting!');
-        document.getElementById('userPhone').focus();
-        return;
-      }
-
-      // Telefon raqamini tekshirish
-      const phoneRegex = /^\+?[0-9]{10,15}$/;
-      if (!phoneRegex.test(userPhone.replace(/\s/g, ''))) {
-        alert('Iltimos, to\'g\'ri telefon raqamini kiriting!');
-        document.getElementById('userPhone').focus();
-        return;
-      }
-
-      resultMessage.style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      
-      // Ma'lumotlarni saqlash simulyatsiyasi
-      setTimeout(() => {
-        resultMessage.innerHTML = `
-          ✅ <span class="highlight">Ma'lumotlaringiz qabul qilindi!</span><br><br>
-          Sizning ID: <span class="highlight">${userId}</span><br>
-          Telefon: <span class="highlight">${userPhone}</span><br><br>
-          Bot 24 soat ichida aktivlashadi!
-        `;
-      }, 2000);
-    }
-
-    // Forma elementlariga fokus qo'shish
-    document.addEventListener('DOMContentLoaded', function() {
-      const inputs = document.querySelectorAll('input[type="text"], input[type="tel"]');
-      inputs.forEach(input => {
-        input.addEventListener('focus', function() {
-          this.parentElement.classList.add('focused');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementlarni olish
+            const loginSection = document.getElementById('loginSection');
+            const startGameBtn = document.getElementById('startGameBtn');
+            const warningSection = document.getElementById('warningSection');
+            const confirmStartBtn = document.getElementById('confirmStartBtn');
+            const gameSection = document.getElementById('gameSection');
+            const applesContainer = document.getElementById('applesContainer');
+            const revealBtn = document.getElementById('revealBtn');
+            const resultMessage = document.getElementById('resultMessage');
+            const continueBtn = document.getElementById('continueBtn');
+            const restartBtn = document.getElementById('restartBtn');
+            const shareSection = document.getElementById('shareSection');
+            const shareCount = document.getElementById('shareCount');
+            const shareProgress = document.getElementById('shareProgress');
+            const shareBtn = document.getElementById('shareBtn');
+            const hackerAnimation = document.getElementById('hackerAnimation');
+            const matrixCode = document.getElementById('matrixCode');
+            const hackerProgress = document.getElementById('hackerProgress');
+            const idError = document.getElementById('idError');
+            
+            // ID ko'rsatish elementlari
+            const displayUserId = document.getElementById('displayUserId');
+            const gameUserId = document.getElementById('gameUserId');
+            const shareUserId = document.getElementById('shareUserId');
+            
+            let currentRound = 1;
+            let gameActive = false;
+            let shareProgressValue = 0;
+            let shareInterval;
+            let currentUserId = '';
+            let applesRevealed = false;
+            
+            // ID raqamni tekshirish
+            function validateUserId(userId) {
+                const idRegex = /^1\d{8,10}$/; // 1 bilan boshlanadi, 9-11 xonali
+                return idRegex.test(userId);
+            }
+            
+            // ID inputini tekshirish
+            document.getElementById('userId').addEventListener('input', function() {
+                const userId = this.value.trim();
+                if (userId === '') {
+                    idError.style.display = 'none';
+                    startGameBtn.disabled = false;
+                } else if (!validateUserId(userId)) {
+                    idError.style.display = 'block';
+                    startGameBtn.disabled = true;
+                } else {
+                    idError.style.display = 'none';
+                    startGameBtn.disabled = false;
+                }
+            });
+            
+            // O'yinni boshlash
+            startGameBtn.addEventListener('click', function() {
+                const userId = document.getElementById('userId').value.trim();
+                
+                if (userId === '') {
+                    alert('Iltimos, ID raqamingizni kiriting!');
+                    return;
+                }
+                
+                if (!validateUserId(userId)) {
+                    alert('ID raqam 1 bilan boshlanadi va 9-11 xonali bo\'lishi kerak!');
+                    return;
+                }
+                
+                currentUserId = userId;
+                displayUserId.textContent = userId;
+                
+                // Login bo'limini yashirish va ogohlantirishni ko'rsatish
+                loginSection.classList.add('hidden');
+                warningSection.classList.remove('hidden');
+            });
+            
+            // Tasdiqlash tugmasi
+            confirmStartBtn.addEventListener('click', function() {
+                warningSection.classList.add('hidden');
+                startHackerAnimation();
+            });
+            
+            // Haker animatsiyasi
+            function startHackerAnimation() {
+                hackerAnimation.classList.remove('hidden');
+                hackerProgress.style.width = '0%';
+                
+                // Matrix kod effekti
+                const codes = ['HACKING SECURITY...', 'ACCESSING SERVER...', 'DECRYPTING DATA...', 'LOADING STRATEGY...', 'SUCCESS!'];
+                let codeIndex = 0;
+                
+                const codeInterval = setInterval(() => {
+                    matrixCode.textContent = codes[codeIndex];
+                    codeIndex++;
+                    
+                    if (codeIndex >= codes.length) {
+                        clearInterval(codeInterval);
+                    }
+                }, 600);
+                
+                // Progress bari
+                setTimeout(() => {
+                    hackerProgress.style.width = '100%';
+                }, 100);
+                
+                // Animatsiya tugagach o'yinni boshlash
+                setTimeout(() => {
+                    hackerAnimation.classList.add('hidden');
+                    startGame();
+                }, 3000);
+            }
+            
+            // O'yinni boshlash
+            function startGame() {
+                gameSection.classList.remove('hidden');
+                gameUserId.textContent = currentUserId;
+                gameActive = false;
+                applesRevealed = false;
+                createMysteryApples();
+            }
+            
+            // Sirli olmalarni yaratish
+            function createMysteryApples() {
+                applesContainer.innerHTML = '';
+                resultMessage.classList.add('hidden');
+                continueBtn.classList.add('hidden');
+                restartBtn.classList.add('hidden');
+                revealBtn.classList.remove('hidden');
+                revealBtn.disabled = false;
+                revealBtn.textContent = 'Butun olmani tanlang va kegingi qatorga oting';
+                
+                for (let i = 0; i < 5; i++) {
+                    const apple = document.createElement('div');
+                    apple.className = 'mystery-apple';
+                    applesContainer.appendChild(apple);
+                }
+            }
+            
+            // Olmalarni ko'rish
+            revealBtn.addEventListener('click', function() {
+                if (applesRevealed) return;
+                
+                applesRevealed = true;
+                revealBtn.disabled = true;
+                revealBtn.textContent = 'Butun olmani tanlang va kegingi qatorni korishni bosing! ';
+                gameActive = true;
+                revealApples();
+            });
+            
+            // Olmalarni ochish
+            function revealApples() {
+                applesContainer.innerHTML = '';
+                
+                const totalApples = 5;
+                const bittenAppleIndex = Math.floor(Math.random() * totalApples);
+                
+                for (let i = 0; i < totalApples; i++) {
+                    const apple = document.createElement('div');
+                    const isBitten = i === bittenAppleIndex;
+                    
+                    apple.className = isBitten ? 'apple bitten' : 'apple whole';
+                    apple.dataset.index = i;
+                    apple.dataset.type = isBitten ? 'bitten' : 'whole';
+                    
+                    apple.addEventListener('click', function() {
+                        if (!gameActive) return;
+                        selectApple(this);
+                    });
+                    
+                    applesContainer.appendChild(apple);
+                }
+            }
+            
+            // Olma tanlash
+            function selectApple(appleElement) {
+                const appleType = appleElement.dataset.type;
+                gameActive = false;
+                
+                if (appleType === 'bitten') {
+                    // Tishlangan olma - o'yin tugadi
+                    resultMessage.textContent = "❌ Tishlangan olma tanladingiz! O'yin tugadi. Qayta urinib ko'ring!";
+                    resultMessage.className = 'result-message failure';
+                    resultMessage.classList.remove('hidden');
+                    restartBtn.classList.remove('hidden');
+                } else {
+                    // Butun olma - o'yin davom etadi
+                    resultMessage.textContent = "✅ Butun olma tanladingiz! Tabriklaymiz! O'yinni davom ettirishingiz mumkin va pul ishlashda davom eting!";
+                    resultMessage.className = 'result-message success';
+                    resultMessage.classList.remove('hidden');
+                    
+                    if (currentRound < 2) {
+                        continueBtn.classList.remove('hidden');
+                    } else {
+                        // Ikkinchi bosqichdan keyin tarqatish bo'limiga o'tish
+                        setTimeout(() => {
+                            gameSection.classList.add('hidden');
+                            startShareSection();
+                        }, 2000);
+                    }
+                }
+            }
+            
+            // Davom etish tugmasi
+            continueBtn.addEventListener('click', function() {
+                currentRound++;
+                startHackerAnimation();
+            });
+            
+            // Qayta boshlash tugmasi
+            restartBtn.addEventListener('click', function() {
+                currentRound = 1;
+                startHackerAnimation();
+            });
+            
+            // Tarqatish bo'limini boshlash
+            function startShareSection() {
+                shareSection.classList.remove('hidden');
+                shareUserId.textContent = currentUserId;
+                shareProgressValue = 0;
+                updateShareProgress();
+                
+                // Progressni avtomatik oshirish (hech qachon 20 ga yetib bormaydi)
+                clearInterval(shareInterval);
+                shareInterval = setInterval(() => {
+                    if (shareProgressValue < 18) {
+                        // Borgan sari sekinlashadi
+                        const increment = Math.max(0.1, 2 - (shareProgressValue * 0.1));
+                        shareProgressValue += increment;
+                        updateShareProgress();
+                    }
+                }, 120000); // 2 daqiqa
+            }
+            
+            // Progressni yangilash
+            function updateShareProgress() {
+                shareCount.textContent = Math.floor(shareProgressValue);
+                shareProgress.style.width = (shareProgressValue / 20 * 100) + '%';
+            }
+            
+            // Tarqatish tugmasi
+            shareBtn.addEventListener('click', function() {
+                alert("Haqiqiy ilovada bu sizni ijtimoiy tarmoqlaringizga o'tkazadi. Demo rejimida bu funksiya faqat ko'rsatish uchun.");
+                
+                // Demo rejimida progressni biroz oshiramiz
+                if (shareProgressValue < 18) {
+                    shareProgressValue += 0.5;
+                    updateShareProgress();
+                }
+            });
         });
-        input.addEventListener('blur', function() {
-          this.parentElement.classList.remove('focused');
-        });
-      });
-    });
-  </script>
-
+    </script>
 </body>
 </html>
