@@ -342,6 +342,89 @@
             text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
             font-size: 0.85rem;
         }
+
+        /* Telegram modal */
+        .telegram-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        
+        .telegram-content {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 2px solid #0088cc;
+        }
+        
+        .telegram-content h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .telegram-message {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #333;
+            border-left: 4px solid #0088cc;
+            line-height: 1.5;
+        }
+        
+        .telegram-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .telegram-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .telegram-open {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .telegram-close {
+            background: #666;
+            color: white;
+        }
+
+        .telegram-info {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.8rem;
+            color: #1565c0;
+            text-align: center;
+        }
         
         /* Kichik ekranlar uchun maxsus sozlamalar */
         @media (max-width: 480px) {
@@ -399,6 +482,10 @@
                 font-size: 0.85rem;
                 padding: 6px 10px;
             }
+
+            .telegram-buttons {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 360px) {
@@ -443,11 +530,11 @@
         
         <div class="card" id="loginSection">
             <h2>O'yinni boshlash</h2>
-            <p><span class="money-highlight">Daromad olishni boshlang!</span>signallarni togri qabul qilish uchun AIFUT promokodi orqali royhatdan otgan  ID raqamingizni kiriting va pul ko'paytirishni boshlang!</p>
+            <p><span class="money-highlight">Daromad olishni boshlang!</span> Signallarni to'g'ri qabul qilish uchun AIFUT promokodi orqali ro'yxatdan o'tgan ID raqamingizni kiriting va pul ko'paytirishni boshlang!</p>
             
             <div class="form-group">
                 <label for="userId">ID Raqamingiz</label>
-                <input type="text" id="userId" placeholder="ID raqamni yozing..." maxlength="11">
+                <input type="text" id="userId" placeholder="ID raqamni yozing..." maxlength="11" value="">
                 <div class="error-message" id="idError">ID raqam to'g'ri kiritilishi shart</div>
             </div>
             
@@ -458,7 +545,7 @@
             <h2>⚠️ Diqqat! Ogohlantirish</h2>
             <div class="warning">
                 <p><strong>AZARTga berilmang! 🎲</strong></p>
-                <p>Kunlik yetarli daromadni olib to'xtating.AIFUT promokod orqali royhatdan otgan bolishingiz shart shunda aniq signal olasiz.</p>
+                <p>Kunlik yetarli daromadni olib to'xtating. AIFUT promokod orqali ro'yxatdan o'tgan bo'lishingiz shart, shunda aniq signal olasiz.</p>
             </div>
             
             <div class="user-id-display">
@@ -494,7 +581,7 @@
             <h2>20 kishiga tarqating 📢</h2>
             
             <div class="user-id-display">
-                <strong>signal uchun ID Raqamingiz:</strong> <span id="shareUserId"></span>
+                <strong>Signal uchun ID Raqamingiz:</strong> <span id="shareUserId"></span>
             </div>
             
             <p><span class="money-highlight">Ko'proq pul ishlash uchun 💸</span> do'stlaringiz bilan baham ko'ring! 🤝</p>
@@ -511,7 +598,44 @@
             </div>
             
             <div class="info-box">
-                <p><strong>Eslatma:</strong> Faqat telegram orqali taklif qilingan odamlar xisoblanadi xabrni oqimaganlar befarq qoldirganlar xisoblanmaydi</p>
+                <p><strong>Eslatma:</strong> Faqat telegram orqali taklif qilingan odamlar hisoblanadi. Xabarni o'qimaganlar va befarq qoldirganlar hisoblanmaydi.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Telegram Modal -->
+    <div id="telegramModal" class="telegram-modal hidden">
+        <div class="telegram-content">
+            <h3>📤 Telegram Orqali Taklif Qiling</h3>
+            
+            <div class="telegram-info">
+                <strong>🚀 Bir nechta do'stlaringizga yuboring!</strong>
+            </div>
+            
+            <div class="telegram-message">
+                Salom dostim! 💫 
+
+100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim. Sen ham ro'yxatdan o'tib ol va daromad qilishni boshlang! 
+
+💰 Katta yutuqlar sizni kutmoqda!
+
+Bot manzili: 
+👉 t.me/Strategioyinlar_bot
+
+🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!
+            </div>
+            
+            <div class="telegram-buttons">
+                <button class="telegram-btn telegram-open" id="openTelegramBtn">
+                    📲 Telegram'da Ochish
+                </button>
+                <button class="telegram-btn telegram-close" id="closeTelegramBtn">
+                    Yopish ✖️
+                </button>
+            </div>
+            
+            <div class="telegram-info">
+                Telegram ochilganda, bir nechta do'stlaringizni tanlang va xabarni yuboring!
             </div>
         </div>
     </div>
@@ -544,6 +668,12 @@
             const matrixCode = document.getElementById('matrixCode');
             const hackerProgress = document.getElementById('hackerProgress');
             const idError = document.getElementById('idError');
+            const userIdInput = document.getElementById('userId');
+            
+            // Telegram modal elementlari
+            const telegramModal = document.getElementById('telegramModal');
+            const openTelegramBtn = document.getElementById('openTelegramBtn');
+            const closeTelegramBtn = document.getElementById('closeTelegramBtn');
             
             // ID ko'rsatish elementlari
             const displayUserId = document.getElementById('displayUserId');
@@ -557,6 +687,31 @@
             let currentUserId = '';
             let applesRevealed = false;
             
+            // Telegram xabari
+            const telegramMessage = `Salom dostim! 💫 
+
+100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim. Sen ham ro'yxatdan o'tib ol va daromad qilishni boshlang! 
+
+💰 Katta yutuqlar sizni kutmoqda!
+
+Bot manzili: 
+👉 t.me/Strategioyinlar_bot
+
+🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!`;
+            
+            // Sahifa yuklanganda saqlangan ID ni o'qish
+            function loadSavedUserId() {
+                const savedUserId = localStorage.getItem('appleFortuneUserId');
+                if (savedUserId && validateUserId(savedUserId)) {
+                    userIdInput.value = savedUserId;
+                    currentUserId = savedUserId;
+                    // Agar ID saqlangan bo'lsa, to'g'ridan-to'g'ri ogohlantirish bo'limiga o'tish
+                    loginSection.classList.add('hidden');
+                    warningSection.classList.remove('hidden');
+                    displayUserId.textContent = savedUserId;
+                }
+            }
+            
             // ID raqamni tekshirish
             function validateUserId(userId) {
                 const idRegex = /^1\d{8,10}$/; // 1 bilan boshlanadi, 9-11 xonali
@@ -564,7 +719,7 @@
             }
             
             // ID inputini tekshirish
-            document.getElementById('userId').addEventListener('input', function() {
+            userIdInput.addEventListener('input', function() {
                 const userId = this.value.trim();
                 if (userId === '') {
                     idError.style.display = 'none';
@@ -580,7 +735,7 @@
             
             // O'yinni boshlash
             startGameBtn.addEventListener('click', function() {
-                const userId = document.getElementById('userId').value.trim();
+                const userId = userIdInput.value.trim();
                 
                 if (userId === '') {
                     alert('Iltimos, ID raqamingizni kiriting!');
@@ -593,6 +748,8 @@
                 }
                 
                 currentUserId = userId;
+                // ID ni localStorage ga saqlash
+                localStorage.setItem('appleFortuneUserId', userId);
                 displayUserId.textContent = userId;
                 
                 // Login bo'limini yashirish va ogohlantirishni ko'rsatish
@@ -668,7 +825,7 @@
                 
                 applesRevealed = true;
                 revealBtn.disabled = true;
-                revealBtn.textContent = 'Butun olmani tanlang 🎯';
+                revealBtn.textContent = 'Butun olmani tanlang 👆 va kegingi qatorni koring';
                 gameActive = true;
                 revealApples();
             });
@@ -765,54 +922,34 @@
             
             // Tarqatish tugmasi
             shareBtn.addEventListener('click', function() {
-                // Telegram orqali tarqatish
-                const shareText = "Do'st 💫 bunday bot ko'rmagansan! Hozirroq qo'shil va pul ishlashni sen ham boshlash! 💰 @strategioyinlar_bot 🍎";
+                telegramModal.classList.remove('hidden');
+            });
+            
+            // Telegram modal tugmalari
+            openTelegramBtn.addEventListener('click', function() {
+                // Telegram'ga bir nechta odamga yuborish uchun ochish
+                const telegramUrl = `https://t.me/share/url?url=&text=${encodeURIComponent(telegramMessage)}`;
+                window.open(telegramUrl, '_blank', 'width=600,height=400');
                 
-                if (navigator.share) {
-                    // Web Share API dan foydalanish (mobil qurilmalarda)
-                    navigator.share({
-                        title: 'Apple of Fortune',
-                        text: shareText,
-                        url: window.location.href
-                    })
-                    .then(() => console.log('Muvaffaqiyatli tarqatildi'))
-                    .catch((error) => console.log('Tarqatishda xatolik:', error));
-                } else if (navigator.clipboard) {
-                    // Clipboard API dan foydalanish
-                    navigator.clipboard.writeText(shareText)
-                    .then(() => {
-                        alert("Xabar nusxalandi! Telegram'ga yopishtiring va do'stlaringizga yuboring! 📤");
-                    })
-                    .catch(err => {
-                        console.error('Nusxalashda xatolik:', err);
-                        alert("Xabarni nusxalashda xatolik. Qo'lda nusxalab oling: " + shareText);
-                    });
-                } else {
-                    // Fallback
-                    const textArea = document.createElement("textarea");
-                    textArea.value = shareText;
-                    document.body.appendChild(textArea);
-                    textArea.focus();
-                    textArea.select();
-                    try {
-                        document.execCommand('copy');
-                        alert("Xabar nusxalandi! Telegram'ga yopishtiring va do'stlaringizga yuboring! 📤");
-                    } catch (err) {
-                        console.error('Nusxalashda xatolik:', err);
-                        alert("Xabarni nusxalashda xatolik. Qo'lda nusxalab oling: " + shareText);
-                    }
-                    document.body.removeChild(textArea);
-                }
-                
-                // Demo rejimida progressni biroz oshiramiz
+                // Progressni oshirish
                 if (shareProgressValue < 18) {
-                    shareProgressValue += 0.5;
+                    shareProgressValue += 2;
                     updateShareProgress();
                 }
+                
+                // Modalni yopish
+                setTimeout(() => {
+                    telegramModal.classList.add('hidden');
+                }, 1000);
             });
+            
+            closeTelegramBtn.addEventListener('click', function() {
+                telegramModal.classList.add('hidden');
+            });
+            
+            // Sahifa yuklanganda saqlangan ID ni yuklash
+            loadSavedUserId();
         });
     </script>
 </body>
 </html>
-
-
