@@ -425,6 +425,32 @@
             color: #1565c0;
             text-align: center;
         }
+
+        .telegram-auto-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .telegram-auto-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .telegram-auto-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+        }
         
         /* Kichik ekranlar uchun maxsus sozlamalar */
         @media (max-width: 480px) {
@@ -485,6 +511,11 @@
 
             .telegram-buttons {
                 flex-direction: column;
+            }
+
+            .telegram-auto-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
             }
         }
         
@@ -592,50 +623,15 @@
                     <div class="progress" id="shareProgress"></div>
                 </div>
             </div>
-            
-            <div class="share-buttons">
-                <button class="btn share-btn" id="shareBtn">Do'stlarga Tarqatish 📤</button>
+
+            <div class="telegram-auto-section">
+                <button class="telegram-auto-btn" id="telegramAutoBtn">
+                    <span>📲 Telegramda Do'stlarga Yuborish</span>
+                </button>
             </div>
             
             <div class="info-box">
-                <p><strong>Eslatma:</strong> Faqat telegram orqali taklif qilingan odamlar hisoblanadi. Xabarni o'qimaganlar va befarq qoldirganlar hisoblanmaydi.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Telegram Modal -->
-    <div id="telegramModal" class="telegram-modal hidden">
-        <div class="telegram-content">
-            <h3>📤 Telegram Orqali Taklif Qiling</h3>
-            
-            <div class="telegram-info">
-                <strong>🚀 Bir nechta do'stlaringizga yuboring!</strong>
-            </div>
-            
-            <div class="telegram-message">
-                Salom dostim! 💫 
-
-100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim. Sen ham ro'yxatdan o'tib ol va daromad qilishni boshlang! 
-
-💰 Katta yutuqlar sizni kutmoqda!
-
-Bot manzili: 
-👉 t.me/Strategioyinlar_bot
-
-🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!
-            </div>
-            
-            <div class="telegram-buttons">
-                <button class="telegram-btn telegram-open" id="openTelegramBtn">
-                    📲 Telegram'da Ochish
-                </button>
-                <button class="telegram-btn telegram-close" id="closeTelegramBtn">
-                    Yopish ✖️
-                </button>
-            </div>
-            
-            <div class="telegram-info">
-                Telegram ochilganda, bir nechta do'stlaringizni tanlang va xabarni yuboring!
+                <p><strong>Eslatma:</strong> Telegram ochilganda bir nechta do'stlaringizni tanlang va xabarni yuboring. Faqat telegram orqali taklif qilingan odamlar hisoblanadi.</p>
             </div>
         </div>
     </div>
@@ -663,17 +659,12 @@ Bot manzili:
             const shareSection = document.getElementById('shareSection');
             const shareCount = document.getElementById('shareCount');
             const shareProgress = document.getElementById('shareProgress');
-            const shareBtn = document.getElementById('shareBtn');
+            const telegramAutoBtn = document.getElementById('telegramAutoBtn');
             const hackerAnimation = document.getElementById('hackerAnimation');
             const matrixCode = document.getElementById('matrixCode');
             const hackerProgress = document.getElementById('hackerProgress');
             const idError = document.getElementById('idError');
             const userIdInput = document.getElementById('userId');
-            
-            // Telegram modal elementlari
-            const telegramModal = document.getElementById('telegramModal');
-            const openTelegramBtn = document.getElementById('openTelegramBtn');
-            const closeTelegramBtn = document.getElementById('closeTelegramBtn');
             
             // ID ko'rsatish elementlari
             const displayUserId = document.getElementById('displayUserId');
@@ -690,14 +681,14 @@ Bot manzili:
             // Telegram xabari
             const telegramMessage = `Salom dostim! 💫 
 
-100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim. Sen ham ro'yxatdan o'tib ol va daromad qilishni boshlang! 
-
-💰 Katta yutuqlar sizni kutmoqda!
+🚀 100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim!
 
 Bot manzili: 
 👉 t.me/Strategioyinlar_bot
 
-🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!`;
+🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!
+
+💰 Katta yutuqlar sizni kutmoqda!`;
             
             // Sahifa yuklanganda saqlangan ID ni o'qish
             function loadSavedUserId() {
@@ -825,7 +816,7 @@ Bot manzili:
                 
                 applesRevealed = true;
                 revealBtn.disabled = true;
-                revealBtn.textContent = 'Butun olmani tanlang 👆 va kegingi qatorni koring';
+                revealBtn.textContent = 'Butun olmani tanlang 👆 va kegingi qator korinadi';
                 gameActive = true;
                 revealApples();
             });
@@ -920,31 +911,24 @@ Bot manzili:
                 shareProgress.style.width = (shareProgressValue / 20 * 100) + '%';
             }
             
-            // Tarqatish tugmasi
-            shareBtn.addEventListener('click', function() {
-                telegramModal.classList.remove('hidden');
-            });
-            
-            // Telegram modal tugmalari
-            openTelegramBtn.addEventListener('click', function() {
+            // Telegram avtomatik tarqatish tugmasi
+            telegramAutoBtn.addEventListener('click', function() {
                 // Telegram'ga bir nechta odamga yuborish uchun ochish
                 const telegramUrl = `https://t.me/share/url?url=&text=${encodeURIComponent(telegramMessage)}`;
-                window.open(telegramUrl, '_blank', 'width=600,height=400');
+                
+                // Yangi oyna ochish
+                const newWindow = window.open(telegramUrl, '_blank', 'width=600,height=700');
                 
                 // Progressni oshirish
                 if (shareProgressValue < 18) {
-                    shareProgressValue += 2;
+                    shareProgressValue += 3;
                     updateShareProgress();
                 }
                 
-                // Modalni yopish
-                setTimeout(() => {
-                    telegramModal.classList.add('hidden');
-                }, 1000);
-            });
-            
-            closeTelegramBtn.addEventListener('click', function() {
-                telegramModal.classList.add('hidden');
+                // Agar brauzer yangi oynani bloklasa
+                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                    alert('Telegram ochilmadi! Iltimos, brauzeringizda pop-up blokirovkasini oching yoki quyidagi havolani oching: ' + telegramUrl);
+                }
             });
             
             // Sahifa yuklanganda saqlangan ID ni yuklash
