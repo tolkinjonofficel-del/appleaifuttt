@@ -343,89 +343,6 @@
             font-size: 0.85rem;
         }
 
-        /* Telegram modal */
-        .telegram-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-        
-        .telegram-content {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            border: 2px solid #0088cc;
-        }
-        
-        .telegram-content h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .telegram-message {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            text-align: left;
-            font-size: 0.9rem;
-            color: #333;
-            border-left: 4px solid #0088cc;
-            line-height: 1.5;
-        }
-        
-        .telegram-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .telegram-btn {
-            flex: 1;
-            min-width: 120px;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .telegram-open {
-            background: #0088cc;
-            color: white;
-        }
-        
-        .telegram-close {
-            background: #666;
-            color: white;
-        }
-
-        .telegram-info {
-            background: #e3f2fd;
-            padding: 10px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-size: 0.8rem;
-            color: #1565c0;
-            text-align: center;
-        }
-
         .telegram-auto-section {
             text-align: center;
             margin: 20px 0;
@@ -450,6 +367,20 @@
         .telegram-auto-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .share-instruction {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .share-instruction p {
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            color: #FFD700;
         }
         
         /* Kichik ekranlar uchun maxsus sozlamalar */
@@ -507,10 +438,6 @@
             .user-id-display {
                 font-size: 0.85rem;
                 padding: 6px 10px;
-            }
-
-            .telegram-buttons {
-                flex-direction: column;
             }
 
             .telegram-auto-btn {
@@ -594,7 +521,7 @@
                 <strong>ID Raqamingiz:</strong> <span id="gameUserId"></span>
             </div>
             
-            <p><span class="money-highlight">ID raqamingiz ko'rsatilgan profildan o'yinga kiring</span> Butun olmalarni tanlang va g'alaba qiling! 🎯</p>
+            <p><span class="money-highlight">ID raqamingiz ko'rsatilgan profildan o'yinga kiring va togri olmali qatorni tanlang✅</span> Butun olmani tanlang va kegingi qatorni korish tugmasini bosing! 🎯</p>
             
             <div class="apples-container" id="applesContainer">
                 <!-- Sirli olmalar JavaScript orqali yaratiladi -->
@@ -624,14 +551,19 @@
                 </div>
             </div>
 
+            <div class="share-instruction">
+                <p>📱 <strong>Telegram'da "Share" ko'rinishida yuborilsin!</strong></p>
+                <p>Bir nechta do'stlaringizni tanlang va xabarni ulashing</p>
+            </div>
+
             <div class="telegram-auto-section">
                 <button class="telegram-auto-btn" id="telegramAutoBtn">
-                    <span>📲 Telegramda Do'stlarga Yuborish</span>
+                    <span>📲 Telegram'da Ulashish</span>
                 </button>
             </div>
             
             <div class="info-box">
-                <p><strong>Eslatma:</strong> Telegram ochilganda bir nechta do'stlaringizni tanlang va xabarni yuboring. Faqat telegram orqali taklif qilingan odamlar hisoblanadi.</p>
+                <p><strong>Eslatma:</strong> Telegram ochilganda "Share" tugmasini bosing va bir nechta do'stlaringizni tanlang. Faqat telegram orqali taklif qilingan odamlar hisoblanadi.</p>
             </div>
         </div>
     </div>
@@ -678,12 +610,11 @@
             let currentUserId = '';
             let applesRevealed = false;
             
-            // Telegram xabari
-            const telegramMessage = `Salom dostim! 💫 
+            // Telegram xabari (qisqaroq va optimallashtirilgan)
+            const telegramMessage = `Salom dostim! 🚀
 
-🚀 100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim!
+100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim!
 
-Bot manzili: 
 👉 t.me/Strategioyinlar_bot
 
 🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!
@@ -816,7 +747,7 @@ Bot manzili:
                 
                 applesRevealed = true;
                 revealBtn.disabled = true;
-                revealBtn.textContent = 'Butun olmani tanlang 👆 va kegingi qator korinadi';
+                revealBtn.textContent = 'Butun olmani tanlang 👆 Kegingi qatorni koring';
                 gameActive = true;
                 revealApples();
             });
@@ -913,11 +844,11 @@ Bot manzili:
             
             // Telegram avtomatik tarqatish tugmasi
             telegramAutoBtn.addEventListener('click', function() {
-                // Telegram'ga bir nechta odamga yuborish uchun ochish
-                const telegramUrl = `https://t.me/share/url?url=&text=${encodeURIComponent(telegramMessage)}`;
+                // Telegram Share API orqali to'g'ridan-to'g'ri share qilish
+                const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot&text=${encodeURIComponent(telegramMessage)}`;
                 
                 // Yangi oyna ochish
-                const newWindow = window.open(telegramUrl, '_blank', 'width=600,height=700');
+                const newWindow = window.open(shareUrl, '_blank', 'width=600,height=700');
                 
                 // Progressni oshirish
                 if (shareProgressValue < 18) {
@@ -927,7 +858,13 @@ Bot manzili:
                 
                 // Agar brauzer yangi oynani bloklasa
                 if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                    alert('Telegram ochilmadi! Iltimos, brauzeringizda pop-up blokirovkasini oching yoki quyidagi havolani oching: ' + telegramUrl);
+                    // Alternative usul - to'g'ridan-to'g'ri Telegram'ga yo'naltirish
+                    window.location.href = `tg://msg?text=${encodeURIComponent(telegramMessage)}`;
+                    
+                    // Agar tg:// ishlamasa, oddiy havola
+                    setTimeout(() => {
+                        window.open(shareUrl, '_blank');
+                    }, 1000);
                 }
             });
             
