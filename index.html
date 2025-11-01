@@ -558,7 +558,7 @@
             </div>
             
             <div class="user-id-display">
-                <strong>signal uchun ID Raqamingiz:</strong> <span id="displayUserId"></span>
+                <strong>ID Raqamingiz:</strong> <span id="displayUserId"></span>
             </div>
             
             <p><span class="money-highlight">Tayyor bo'lsangiz, daromad olishni boshlang! 💰</span></p>
@@ -569,7 +569,7 @@
             <h2>Apple of Fortune 🍎</h2>
             
             <div class="user-id-display">
-                <strong>signal uchun ID Raqamingiz:</strong> <span id="gameUserId"></span>
+                <strong>ID Raqamingiz:</strong> <span id="gameUserId"></span>
             </div>
             
             <div class="round-indicator" id="roundIndicator">signal: 1</div>
@@ -595,7 +595,7 @@
                 <strong>signal uchun ID Raqamingiz:</strong> <span id="shareUserId"></span>
             </div>
             
-            <div class="round-indicator" id="shareRoundIndicator">signal: 1</div>
+            <div class="round-indicator" id="shareRoundIndicator">signal: 2</div>
             
             <p><span class="money-highlight">Kegingi qator  signal olish uchun 5 ta dostingizga bot silkasini yuboring yuborganingizdan song kegingi qatorni korish < tugmasi paydo boladi 💸</span></p>
 
@@ -937,8 +937,14 @@
                             gameSection.classList.add('hidden');
                             showGameOverSection();
                         }, 2000);
+                    } else if (currentRound === 1) {
+                        // 1-qatordan 2-qatorga o'tishda taklif qilish talab qilinmaydi
+                        setTimeout(() => {
+                            currentRound++;
+                            startHackerAnimation();
+                        }, 2000);
                     } else if (currentRound < 6) {
-                        // Taklif qilish bo'limiga o'tish
+                        // 2-qatordan keyin taklif qilish bo'limiga o'tish
                         setTimeout(() => {
                             gameSection.classList.add('hidden');
                             startShareSection();
